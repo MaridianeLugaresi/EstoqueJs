@@ -30,13 +30,11 @@ do {
     }
                 
     console.log("\nSaldo atual do estoque: " + quantidadeEstoque);
-    
-    console.log("\nDeseja continuar:");
-    resposta = readlineSync.question("S - Sim ou N - Nao ");
 
-} while (resposta.toUpperCase() === 'S');
+} while (continuarExecutando());
 
 console.log("\nSistema Encerrado");
+
 
 function realizarCompra() {
     quantidadeEstoque = quantidadeEstoque + quantidadePecas;
@@ -48,4 +46,10 @@ function realizarVenda() {
     } else {
         console.log("\nSaldo em estoque insuficiente");
     }
+}
+
+function continuarExecutando() {
+    console.log("\nDeseja continuar:");
+    resposta = readlineSync.question("S - Sim ou N - Nao ");
+    return resposta.toUpperCase() === 'S'
 }
