@@ -17,15 +17,11 @@ do {
     
     switch (operacao) {
         case OPERACAO_COMPRA:
-            quantidadeEstoque = quantidadeEstoque + quantidadePecas;
+            realizarCompra();
             break;
             
         case OPERACAO_VENDA:
-            if (quantidadePecas < quantidadeEstoque) {
-                quantidadeEstoque = quantidadeEstoque - quantidadePecas;
-            } else {
-                console.log("\nSaldo em estoque insuficiente");
-            }
+            realizarVenda();
             break;
             
             default:
@@ -41,3 +37,15 @@ do {
 } while (resposta.toUpperCase() === 'S');
 
 console.log("\nSistema Encerrado");
+
+function realizarCompra() {
+    quantidadeEstoque = quantidadeEstoque + quantidadePecas;
+}
+
+function realizarVenda() {
+    if (quantidadePecas < quantidadeEstoque) {
+        quantidadeEstoque = quantidadeEstoque - quantidadePecas;
+    } else {
+        console.log("\nSaldo em estoque insuficiente");
+    }
+}
